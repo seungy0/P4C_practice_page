@@ -67,11 +67,11 @@
     <div class="col-xxl-4">
       <div>
         <h4 class="mb-3">User Info</h4>
-        <form class="needs-validation" novalidate="">
+        <form class="needs-validation" action="signup.php" method="POST" novalidate="">
           <div class="row g-3">
             <div class="col-12">
               <label for="id" class="form-label">Id</label>
-              <input type="text" class="form-control" id="id" placeholder="Id" value="" required="">
+              <input type="text" class="form-control" id="id" name="id" placeholder="" value="" required="">
               <div class="invalid-feedback">
                 id duplicated.
               </div>
@@ -80,7 +80,7 @@
             <div class="col-12">
               <label for="username" class="form-label">Username</label>
               <div class="input-group has-validation">
-                <input type="text" class="form-control" id="username" placeholder="Username" required="">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username" required="">
               <div class="invalid-feedback">
                   Your username is required.
                 </div>
@@ -89,22 +89,15 @@
 
             <div class="col-12">
               <label for="email" class="form-label">Email <span class="text-muted"></span></label>
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Email">
-                <button type="submit" class="btn btn-secondary">Send Check email</button>
-              </div>
-            </div>
-            <div class="col-12">
-              <label for="email" class="form-label">Email Check Code<span class="text-muted"></span></label>
-              <div class="input-group">
-                <input type="text" class="form-control" placeholder="Code">
-                <button type="submit" class="btn btn-secondary">Confirm</button>
+              <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
+              <div class="invalid-feedback">
+                Please enter a valid email address.
               </div>
             </div>
 
             <div class="col-12">
               <label for="password" class="form-label">Password</label>
-              <input type="text" class="form-control" id="password" placeholder="password" required="">
+              <input type="text" class="form-control" id="password" name="password" placeholder="1234 Main St" required="">
               <div class="invalid-feedback">
                 Please enter your password
               </div>
