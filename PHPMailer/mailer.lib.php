@@ -23,7 +23,7 @@ function mailer($fname, $fmail, $to, $subject, $content, $type=0, $file="", $cc=
 
 	$mail->Host = "smtp.naver.com"; 
 	$mail->Port = 465; 
-	$mail->Username = "네이버 아이디";
+	$mail->Username = "yhs05323@naver.com";
 	$mail->Password = "네이버 아이디 비밀번호"; 
 
     $mail->CharSet = 'UTF-8';
