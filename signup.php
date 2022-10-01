@@ -40,7 +40,7 @@ if ($result === false) {
     $message = '
     
     Please click this link to activate your account:
-    localhost/verify.php?email='.$email.'&id='.$id.'
+    localhost/P4C_practice_page/verify.php?email='.$email.'&id='.$id.'
      
     ';
                          
