@@ -12,7 +12,7 @@ if(empty($id) ||empty($username) ||empty($email) ||empty($password)){
 ?>
     <script>
         alert("빈칸이 있습니다.");
-        location.href = "signup.html";
+        location.href = "signup.php";
     </script>
 <?php
 }else{
@@ -32,7 +32,7 @@ if ($result === false) {
     ?>
         <script>
             alert("이메일이 유효하지 않습니다.");
-            location.href = "signup.html";
+            location.href = "signup.php";
         </script>
     <?php
     }else{

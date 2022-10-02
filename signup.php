@@ -100,7 +100,7 @@
 
             <div class="col-12">
               <label for="password" class="form-label">Password</label>
-              <input type="text" class="form-control" id="password" name="password" placeholder="1234 Main St" required="">
+              <input type="text" class="form-control" id="password" name="password" placeholder="password" required="">
               <div class="invalid-feedback">
                 Please enter your password
               </div>
