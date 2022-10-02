@@ -1,3 +1,6 @@
+<?php 
+  include 'session_head.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -62,11 +65,27 @@
         <a href="./index.html" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
             <span class="fs-4">P4C practice</span>
         </a>
-
+        <?php
+          if ( !$jb_login ) {
+        ?>
         <div class="col-md-3">
             <a href="./signin.html"><button type="button" class="btn btn-outline-primary me-2">Login</button></a>
             <a  href="./signup.html"><button type="button" class="btn btn-primary">Sign-up</button></a>
         </div>
+        <?php
+          } else {
+        ?>
+        <div class="dropdown text-end">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="https://png.pngtree.com/png-vector/20190909/ourmid/pngtree-outline-user-icon-png-image_1727916.jpg" alt="mdo" width="32" height="32" class="rounded-circle">
+          </a>
+          <ul class="dropdown-menu text-small" style="">
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
+          </ul>
+        </div>
+        <?php
+          }
+        ?>
     </header>
     <div class="album py-5 bg-light">
         <div class="container">
@@ -89,6 +108,7 @@
             </div>
         </div>
     </div>
+    <script src="./js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

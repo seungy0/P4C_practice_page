@@ -1,3 +1,6 @@
+<?php 
+  include 'session_head.php';
+?>
 <!DOCTYPE html>
 <html>
 <head>
