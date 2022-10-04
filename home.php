@@ -101,19 +101,31 @@
             <tr class="table-primary">
               <th style="width: 5%" scope="col">#</th>
               <th style="width: 70%" scope="col">제목</th>
-              <th style="width: 10%" scope="col">글쓴이</th>
-              <th style="width: 5%" scope="col">작성일</th>
+              <th style="width: 15%" scope="col">글쓴이</th>
               <th style="width: 5%" scope="col">조회수</th>
               <th style="width: 5%" scope="col">추천</th>
             </tr>
           </thead>
           <tbody>
+            <?php 
+              $conn = mysqli_connect('localhost', 'root', '', 'test');
+              $sql = "SELECT * FROM posts ORDER BY idx DESC";
+              $res = mysqli_query($conn, $sql);
+              while($row = mysqli_fetch_array($res)){
+            ?>
+            <tr>
+              <td><?php echo $row['idx'];?></td>
+              <td><?php echo $row['title'];?></td>
+              <td><?php echo $row['writer'];?></td>
+              <td><?php echo $row['views'];?></td>
+              <td><?php echo $row['recommand'];?></td>
+            </tr>
+            <?php } ?>
             <tr>
               <td>1,001</td>
               <td>random</td>
               <td>data</td>
               <td>placeholder</td>
-              <td>text</td>
               <td>text</td>
             </tr>
             <tr>
@@ -122,7 +134,6 @@
               <td>irrelevant</td>
               <td>visual</td>
               <td>layout</td>
-              <td>text</td>
             </tr>
             <tr>
               <td>1,003</td>
