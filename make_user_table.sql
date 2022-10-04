@@ -1,4 +1,4 @@
-use forum;
+use test;
 
 CREATE TABLE IF NOT EXISTS `accounts` (
     `useridx` int primary key auto_increment,

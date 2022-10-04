@@ -65,44 +65,43 @@
 <div class="container">
   <main>
     <div class="py-5 text-center">
-      <h2>Sign up</h2>
+      <h2>글쓰기</h2>
     </div>
     <div class="col-xxl-4">
       <div>
-        <h4 class="mb-3">User Info</h4>
-        <form class="needs-validation" action="signup_process.php" method="POST" novalidate="" enctype="multipart/form-data">
+        <form class="needs-validation" action="write_post_process.php" method="POST" novalidate="">
           <div class="row g-3">
             <div class="col-12">
-              <label for="id" class="form-label">Id</label>
-              <input type="text" class="form-control" id="id" name="id" placeholder="" value="" required="">
+              <label for="id" class="form-label">제목</label>
+              <input type="text" class="form-control" id="title" name="title" placeholder="" value="" required>
               <div class="invalid-feedback">
-                id duplicated.
+                empty title.
               </div>
             </div>
-
             <div class="col-12">
-              <label for="username" class="form-label">Username</label>
-              <div class="input-group has-validation">
-                <input type="text" class="form-control" id="username" name="username" placeholder="Username" required="">
+              <label for="id" class="form-label">게시판 이름</label>
+              <select class="form-select" aria-label="Default select example" name="category">
+                <option value="free" selected>자유</option>
+                <option value="study">공부</option>
+              </select>
               <div class="invalid-feedback">
-                  Your username is required.
+                empty title.
+              </div>
+            </div>
+            <div class="col-12">
+              <label for="contents" class="form-label">내용</label>
+              <div class="input-group has-validation">
+                <textarea class="form-control input-lg" id="contents" name="contents"></textarea>
+              <div class="invalid-feedback">
+                  Your contents is required.
                 </div>
               </div>
             </div>
-
             <div class="col-12">
-              <label for="email" class="form-label">Email <span class="text-muted"></span></label>
-              <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
+              <label for="" class="form-label">첨부파일(gif,jpg,jpeg,png)</label>
+              <input type="file" class="form-control" id="file" name="file" required="">
               <div class="invalid-feedback">
-                Please enter a valid email address.
-              </div>
-            </div>
-
-            <div class="col-12">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" name="password" placeholder="password" required="">
-              <div class="invalid-feedback">
-                Please enter your password
+                file is wrong
               </div>
             </div>
           </div>

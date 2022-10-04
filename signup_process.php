@@ -50,7 +50,7 @@ if ($result === false) {
     ?>
         <script>
              alert("회원가입이 완료되었습니다. 인증 이메일을 확인해주세요.");
-            // location.href = "home.html";
+            location.href = "home.php";
         </script>
     <?php
     }
