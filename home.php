@@ -66,7 +66,7 @@
             ?>
             <tr>
               <td><?php echo $row['idx'];?></td>
-              <td onClick="location.href='./post.php?id=<?php echo $row['idx'];?>'" style="cursor:pointer;"><?php echo $row['title'];?></td>
+              <td onClick="location.href='./post.php?id=<?php echo $row['idx'];?>'" style="cursor:pointer; text-decoration-line: underline;"><?php echo $row['title'];?></td>
               <td><?php echo $row['writer'];?></td>
               <td><?php echo $row['views'];?></td>
               <td><?php echo $row['recommand'];?></td>
