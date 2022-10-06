@@ -4,6 +4,7 @@
 <html lang="en">
 <head>
     <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
       .container {
         max-width: 960px;
@@ -19,7 +20,7 @@
     </div>
     <div class="col-xxl-4">
       <div>
-        <form class="needs-validation" action="write_post_process.php" method="POST" novalidate="">
+        <form class="needs-validation" action="write_post_process.php" method="POST" novalidate="" enctype="multipart/form-data">
           <div class="row g-3">
             <div class="col-12">
               <label for="id" class="form-label">제목</label>
