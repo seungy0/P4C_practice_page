@@ -1,6 +1,6 @@
 <?php 
   include 'session_head.php';
-  $conn = mysqli_connect('localhost', 'root', '', 'test');
+  $conn = mysqli_connect('13.209.116.117', 'root', '1234', 'test',56095);
   $sql = "SELECT * FROM `posts` WHERE `idx` = '{$_GET['id']}'";
   // 방문자 수 연산
   $result = mysqli_query($conn, $sql);

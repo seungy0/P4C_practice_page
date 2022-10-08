@@ -56,7 +56,7 @@
           </thead>
           <tbody>
             <?php 
-              $conn = mysqli_connect('localhost', 'root', '', 'test');
+              $conn = mysqli_connect('13.209.116.117', 'root', '1234', 'test',56095);
               mysqli_query($conn, "set session character_set_connection=utf8;");
               mysqli_query($conn, "set session character_set_results=utf8;");
               mysqli_query($conn, "set session character_set_client=utf8;");

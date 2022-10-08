@@ -36,9 +36,9 @@ function sendMail($to, $from, $from_name, $subject, $body){
 	  return true;
     }
 }
-error_reporting(-1);
-ini_set('display_errors', 'On');
-set_error_handler("var_dump");
+// error_reporting(-1);
+// ini_set('display_errors', 'On');
+// set_error_handler("var_dump");
 
 $id = $_POST['id'];
 $username = $_POST['username'];
@@ -53,7 +53,10 @@ if(empty($id) ||empty($username) ||empty($email) ||empty($password)){
     </script>
 <?php
 }else{
-$conn = mysqli_connect('localhost', 'root', '', 'test');
+$conn = mysqli_connect('13.209.116.117', 'root', '1234', 'test',56095);
+echo "conn : ";
+if ($conn) echo "success";
+
 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 echo $hashedPassword;
 $sql = "
@@ -87,7 +90,7 @@ if ($result === false) {
     ?>
         <script>
              alert("회원가입이 완료되었습니다. 인증 이메일을 확인해주세요.");
-            location.href = "home.php";
+            // location.href = "home.php";
         </script>
     <?php
     }

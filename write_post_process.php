@@ -26,7 +26,7 @@ if(empty($title) ||empty($contents)){
     $type = $file["type"];
     $size = $file["size"];
     $tmp_name = $file["tmp_name"];
-    $conn = mysqli_connect('localhost', 'root', '', 'test');
+    $conn = mysqli_connect('13.209.116.117', 'root', '1234', 'test',56095);
     $sql = "
     insert into posts(title, contents, writer,category,file) values('{$title}', '{$contents}', '{$_SESSION[ 'id' ]}','{$category}','{$name}')";
     $folder = "./upload/".$name;
