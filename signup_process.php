@@ -1,4 +1,41 @@
 <?php
+require 'libphp-phpmailer/PHPMailerAutoload.php';
+function sendMail($to, $from, $from_name, $subject, $body){
+    $mail             = new PHPMailer();
+
+    $mail->IsSMTP();                           // telling the class to use SMTP
+
+    $mail->SMTPDebug  = 1;                     // enables SMTP debug information (for testing)
+                                               // 0 = 아무것도 표시하지 않음
+                                               // 1 = errors and messages
+                                               // 2 = messages only
+    $mail->CharSet    = "utf-8";
+    $mail->SMTPAuth   = true;                  // enable SMTP authentication
+    $mail->SMTPSecure = "ssl";                 // sets the prefix to the servier (TLS는 tls 입력)
+    $mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
+    $mail->Port       = 465;                   // set the SMTP port for the GMAIL server (TLS는 587 입력)
+    $mail->Username   = "dltmdrb98@gmail.com";            // GMAIL username
+    $mail->Password   = "exlobafvsaursjqr";            // GMAIL password
+
+    $mail->SetFrom($from, $from_name);
+
+    $mail->AddReplyTo($from, $from_name);
+
+    $mail->Subject   = $subject;
+
+    $mail->MsgHTML($body);
+
+    $address = $to;
+    $mail->AddAddress($address);
+
+    if(!$mail->Send()) {
+      //echo "발송 실패: " . $mail->ErrorInfo;
+	  return false;
+    } else {
+      //echo "발송 완료";
+	  return true;
+    }
+}
 error_reporting(-1);
 ini_set('display_errors', 'On');
 set_error_handler("var_dump");
@@ -40,12 +77,12 @@ if ($result === false) {
     $message = '
     
     Please click this link to activate your account:
-    localhost/P4C_practice_page/verify.php?email='.$email.'&id='.$id.'
+    https://pc-practice-page-pvfho.run.goorm.io/P4C_practice_page/verify.php?email='.$email.'&id='.$id.'
      
     ';
                          
     $headers = 'From:noreply@p4cprac.com' . "\r\n"; // Set from headers
-    if(mail($email, $subject, $message, $headers)){echo "success email";} // Send our email
+    if(sendMail($email,'noreply@prc.com','verify' ,$subject, $message)){echo "success email";} // Send our email
 
     ?>
         <script>
