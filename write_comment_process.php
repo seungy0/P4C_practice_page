@@ -1,5 +1,6 @@
 <?php
 	include 'session_head.php';
+	require 'pw.php';
 	$contents = $_POST['contents'];
 	if(!$jb_login){
     ?>
@@ -13,7 +14,7 @@
 		$post_id = $_POST['post_id'];
 		$writer = $_SESSION[ 'id' ];
 		$contents = $_POST['contents'];
-		$conn = mysqli_connect('13.209.116.117', 'root', '1234', 'test',56095);
+		$conn = mysqli_connect('13.209.116.117', 'root', $dbpw, 'test',56095);
 		$sql = "insert into comments(post_id,contents, writer) values('{$post_id}', '{$contents}', '{$writer}')";
 		$result = mysqli_query($conn, $sql);
 		if ($result === false) {

@@ -1,5 +1,6 @@
 <?php 
   include 'session_head.php';
+  require 'pw.php';
 ?>
 <!doctype html>
 <html lang="ko">
@@ -12,7 +13,7 @@
       if ( $jb_login ) {
         echo '<h1>이미 로그인하셨습니다.</h1>';
       } else {
-        $conn = mysqli_connect('13.209.116.117', 'root', '1234', 'test',56095);
+        $conn = mysqli_connect('13.209.116.117', 'root', $dbpw, 'test',56095);
         $id = $_POST[ 'id' ];
         $password = $_POST[ 'password' ];
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);

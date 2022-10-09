@@ -1,5 +1,6 @@
 <?php
 require 'libphp-phpmailer/PHPMailerAutoload.php';
+require 'pw.php';
 function sendMail($to, $from, $from_name, $subject, $body){
     $mail             = new PHPMailer();
 
@@ -15,7 +16,7 @@ function sendMail($to, $from, $from_name, $subject, $body){
     $mail->Host       = "smtp.gmail.com";      // sets GMAIL as the SMTP server
     $mail->Port       = 465;                   // set the SMTP port for the GMAIL server (TLS는 587 입력)
     $mail->Username   = "dltmdrb98@gmail.com";            // GMAIL username
-    $mail->Password   = "exlobafvsaursjqr";            // GMAIL password
+    $mail->Password   = $gmailpw;            // GMAIL password
 
     $mail->SetFrom($from, $from_name);
 
@@ -53,7 +54,7 @@ if(empty($id) ||empty($username) ||empty($email) ||empty($password)){
     </script>
 <?php
 }else{
-$conn = mysqli_connect('13.209.116.117', 'root', '1234', 'test',56095);
+$conn = mysqli_connect('13.209.116.117', 'root', $dbpw, 'test',56095);
 echo "conn : ";
 if ($conn) echo "success";
 

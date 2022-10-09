@@ -1,5 +1,6 @@
 <?php 
   include 'session_head.php';
+	require 'pw.php';
 ?>
 <?php
 // error_reporting(-1);
@@ -26,7 +27,7 @@ if(empty($title) ||empty($contents)){
     $type = $file["type"];
     $size = $file["size"];
     $tmp_name = $file["tmp_name"];
-    $conn = mysqli_connect('13.209.116.117', 'root', '1234', 'test',56095);
+    $conn = mysqli_connect('13.209.116.117', 'root', $dbpw, 'test',56095);
     $sql = "
     insert into posts(title, contents, writer,category,file) values('{$title}', '{$contents}', '{$_SESSION[ 'id' ]}','{$category}','{$name}')";
     $folder = "/workspace/P4C_practice_page/upload/".basename($name);

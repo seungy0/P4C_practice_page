@@ -1,10 +1,11 @@
 <?php 
   include 'session_head.php';
+require 'pw.php';
   $category = $_GET["category"];
   $catago =$_GET["catago"];
   $search =$_GET["search"];
   // echo $category;
-  $conn = mysqli_connect('13.209.116.117', 'root', '1234', 'test',56095);
+  $conn = mysqli_connect('13.209.116.117', 'root', $dbpw, 'test',56095);
   $verified = false;
   if($jb_login){
 	  $verified = mysqli_fetch_array(mysqli_query($conn,"SELECT verify FROM users WHERE id='{$_SESSION[ 'id' ]}'"))['verify'];
