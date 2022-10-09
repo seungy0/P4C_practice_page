@@ -92,5 +92,48 @@
     <!-- <script src="./js/bootstrap.bundle.min.js"></script> -->
       <!-- <script src="form-validation.js"></script> -->
       <script src="./js/bootstrap.bundle.min.js"></script>
+	  <br>
+	  <br>
+	  <div class="w-75" style="position: relative; left: 30px;">
+	  <label>댓글</label>
+	  <form class="needs-validation" action="write_comment_process.php" method="POST">
+          <div class="row g-3">
+			<input type="text" name="post_id" value='<?php echo $_GET['id']; ?>' style='display:none'/>
+            <div class="col-9">
+              <div class="input-group has-validation">
+                <textarea class="form-control input-lg" id="contents" name="contents"></textarea>
+                <div class="invalid-feedback">
+                  Your contents is required.
+                </div>
+              </div>
+            </div>
+			  <div class="col-3">
+				  <button class="w-100 btn btn-primary btn-lg" type="submit">Submit</button>
+				</div>
+          </div>
+        </form>
+	  </div>
+	  <br>
+	  <br>
+	  <div class="w-75" style="position: relative; left: 30px;">
+		  <div class="row g-3">
+			  <?php 
+				$sql = "SELECT * FROM `comments` WHERE `post_id` = '{$_GET['id']}' ORDER BY idx DESC";
+  				$comments = mysqli_query($conn, $sql);
+			  	while($row = mysqli_fetch_array($comments)){
+			  ?>
+			  <div class="ms-3">
+				  <div class="fw-bold">
+					  <?php echo $row['writer']; ?>
+				  </div>
+				  <?php echo $row['contents'] ?>
+			  </div>
+			  <?php
+				}
+			  ?>
+		  </div>
+	  </div>
+	  <br>
+	  <br>
 </body>
 </html>

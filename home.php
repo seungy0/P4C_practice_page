@@ -3,7 +3,7 @@
   $category = $_GET["category"];
   $catago =$_GET["catago"];
   $search =$_GET["search"];
-  echo $category;
+  // echo $category;
   $conn = mysqli_connect('13.209.116.117', 'root', '1234', 'test',56095);
   $verified = false;
   if($jb_login){
@@ -116,7 +116,6 @@
 			  }
 			  }
               $sql = $sql." ORDER BY idx DESC";
-			  echo $sql;
               $res = mysqli_query($conn, $sql);
               while($row = mysqli_fetch_array($res)){
             ?>

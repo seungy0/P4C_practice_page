@@ -77,12 +77,15 @@ if ($result === false) {
     <?php
     }else{
     $subject = 'P4c practice id verification'; // Give the email a subject 
-    $message = '
-    
-    Please click this link to activate your account:
-    https://pc-practice-page-pvfho.run.goorm.io/P4C_practice_page/verify.php?email='.$email.'&id='.$id.'
-     
-    ';
+    $message = "
+    <html>
+	<body>
+    Please click this link to activate your account:<br>
+	<a href='https://pc-practice-page-pvfho.run.goorm.io/P4C_practice_page/verify.php?email={$email}&id={$id}'>
+	link</a>
+     </body>
+	 </html>
+    ";
                          
     $headers = 'From:noreply@p4cprac.com' . "\r\n"; // Set from headers
     if(sendMail($email,'noreply@prc.com','verify' ,$subject, $message)){echo "success email";} // Send our email
