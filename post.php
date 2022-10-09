@@ -8,9 +8,11 @@
   date_default_timezone_set('Asia/Seoul');
   $timestamp = strtotime("Now");
   $views = $row['views'];
+  $now = date("Y-m-d H:i:s");
   if($timestamp-strtotime($row['recent_view'])>=3600){
     mysqli_query($conn,"UPDATE posts SET views = views + 1 WHERE idx='{$_GET['id']}'");
     $views = $views+1;
+	mysqli_query($conn,"UPDATE posts SET recent_view = '{$now}' WHERE idx='{$_GET['id']}'");
   }
 ?>
 <html lang="en">
@@ -68,12 +70,20 @@
                 <button for="recommand" class="btn btn-sm btn-light">👍추천</p>
               </a>
             </div>
+			<div class="col-1">
+				<p>
+						첨부파일 : 
+				</p>
+			</div>
+			<div class="col-11">
+				<a href='./upload/<?php echo $row['file']?>'>
+					<span><?php echo $row['file']?></span>
+				</a>
+            </div>
             <div class="col-12">
               <p for="contents" class="form-label"><?php echo nl2br($row['contents']) ?></p>
             </div>
-            <div class="col-12">
-
-            </div>
+            
           </div>
       </div>
     </div>

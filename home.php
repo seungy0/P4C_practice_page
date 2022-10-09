@@ -1,10 +1,20 @@
 <?php 
   include 'session_head.php';
+  $category = $_GET["category"];
+  $catago =$_GET["catago"];
+  $search =$_GET["search"];
+  echo $category;
+  $conn = mysqli_connect('13.209.116.117', 'root', '1234', 'test',56095);
+  $verified = false;
+  if($jb_login){
+	  $verified = mysqli_fetch_array(mysqli_query($conn,"SELECT verify FROM users WHERE id='{$_SESSION[ 'id' ]}'"))['verify'];
+  }
 ?>
 <!DOCTYPE html>
 <html>
 <head>
   <link href="./css/bootstrap.min.css" rel="stylesheet">
+  <!-- <meta charset="utf-8"> -->
 </head>
 
 <body>
@@ -35,13 +45,47 @@
           }
         ?>
     </header>
-    <div>
-      <button type="button" class="btn btn-light">전체</button>
-      <button type="button" class="btn btn-light">자유</button>
-      <button type="button" class="btn btn-light">공부</button>
+    <div class="row g-3">
+		<div class="col-5">
+		<a href="https://pc-practice-page-pvfho.run.goorm.io/P4C_practice_page/home.php" class="text-decoration-none">
+		  <button type="button" class="btn btn-light">전체</button>
+		</a>
+		<a href="https://pc-practice-page-pvfho.run.goorm.io/P4C_practice_page/home.php?category=free" class="text-decoration-none">
+		  <button type="button" class="btn btn-light">자유</button>
+			</a>
+		<a href="https://pc-practice-page-pvfho.run.goorm.io/P4C_practice_page/home.php?category=study" class="text-decoration-none">
+		  <button type="button" class="btn btn-light">공부</button>
+			</a>
+		</div>
+		<div class="col-5">
+	  <form action="home.php" method="get">
+		<input type="text" name="category" value='<?php echo $category; ?>' style='display:none'/>
+
+      <select name="catago">
+        <option value="title">제목</option>
+        <option value="contents">내용</option>
+        </select>
+		<input type="text" name="search" size="40" required="required" /> <button>검색</button>
+      </form>
+		</div>
+		<?php
+          if ( $jb_login && $verified) {
+      ?>
+		<div class="col-2">
+	  
       <a href="./write_post.php">
         <button type="button" class="btn btn-light" style="float:right;">글쓰기</button>
       </a>
+		</div>
+		<?php
+		  }else if($jb_login){
+		?>
+		<div class="col-2">
+        <button type="button" class="btn btn-light" style="float:right;">글쓰기(이메일 인증 필요)</button>
+		</div>
+		<?php
+		  }
+      ?>
     </div>
     <div class="table-responsive">
         <table class="table table-striped table-sm">
@@ -56,11 +100,23 @@
           </thead>
           <tbody>
             <?php 
-              $conn = mysqli_connect('13.209.116.117', 'root', '1234', 'test',56095);
-              mysqli_query($conn, "set session character_set_connection=utf8;");
-              mysqli_query($conn, "set session character_set_results=utf8;");
-              mysqli_query($conn, "set session character_set_client=utf8;");
-              $sql = "SELECT * FROM posts ORDER BY idx DESC";
+              // mysqli_query($conn, "set session character_set_connection=utf8;");
+              // mysqli_query($conn, "set session character_set_results=utf8;");
+              // mysqli_query($conn, "set session character_set_client=utf8;");
+			  $sql = "SELECT * FROM posts";
+			  if($category && $category!=''){
+				  $sql = $sql." WHERE category='{$category}'";
+				  if($catago){
+				  $sql = $sql." AND $catago like '%$search%'";
+			  }
+			  }
+			  else{
+				  if($catago){
+				  $sql = $sql." WHERE $catago like '%$search%'";
+			  }
+			  }
+              $sql = $sql." ORDER BY idx DESC";
+			  echo $sql;
               $res = mysqli_query($conn, $sql);
               while($row = mysqli_fetch_array($res)){
             ?>
@@ -77,5 +133,4 @@
       </div>
     <script src="./js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

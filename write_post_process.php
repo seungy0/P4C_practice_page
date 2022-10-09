@@ -29,7 +29,7 @@ if(empty($title) ||empty($contents)){
     $conn = mysqli_connect('13.209.116.117', 'root', '1234', 'test',56095);
     $sql = "
     insert into posts(title, contents, writer,category,file) values('{$title}', '{$contents}', '{$_SESSION[ 'id' ]}','{$category}','{$name}')";
-    $folder = "./upload/".$name;
+    $folder = "/workspace/P4C_practice_page/upload/".basename($name);
     move_uploaded_file($tmp_name,$folder);
     $result = mysqli_query($conn, $sql);
     if ($result === false) {
